@@ -28,3 +28,11 @@
     * Advantage: simple, flexible
     * Disadvantage: higher complexity
 
+### DFT-Based Method
+
+```m
+function recSTFT(x, t, f, b)
+
+   
+end
+```

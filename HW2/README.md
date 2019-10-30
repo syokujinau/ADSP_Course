@@ -11,20 +11,20 @@
 1. Direct Implementation - $\Theta(TFQ)$
     * Advantage: simple, flexible
     * Disadvantage: higher complexity
-2. DFT-Based Method
+2. DFT-Based Method - $\Theta(TNlogN)$
     * Advantage: lower complexity
     * Disadvantage: with some constraints
         1. $\Delta_t \Delta_f = \frac{1}{N}$, $N$ is integer
         2. $N \geq 2Q + 1$
         3. $\Delta_t < \frac{1}{2(\Omega_w + \Omega_x)}$
-3. Recursive Method
+3. Recursive Method - $\Theta(TF)$
     * Advantage: lower complexity
     * Disadvantage: most constraints
         1. $\Delta_t \Delta_f = \frac{1}{N}$, $N$ is integer
         2. $N \geq 2Q + 1$
         3. $\Delta_t < \frac{1}{2(\Omega_w + \Omega_x)}$
         4. only suitable for rectangular windows
-4. Chrip-Z Transform
+4. Chrip-Z Transform - $\Theta(TNlogN)$
     * Advantage: simple, flexible
     * Disadvantage: higher complexity
 

@@ -4,6 +4,7 @@
 
 <img src="https://render.githubusercontent.com/render/math?math=\LARGE XXX" />
 
+%2B
 -->
 
 1. Submit the code to ceiba
@@ -14,23 +15,23 @@
 
 ## Methods
 
-1. Direct Implementation - $\Theta(TFQ)$
+1. Direct Implementation - <img src="https://render.githubusercontent.com/render/math?math=\large \Theta(TFQ)" />
     * Advantage: simple, flexible
     * Disadvantage: higher complexity
-2. DFT-Based Method - $\Theta(TNlogN)$
+2. DFT-Based Method - <img src="https://render.githubusercontent.com/render/math?math=\large\Theta(TNlogN)" />
     * Advantage: lower complexity
     * Disadvantage: with some constraints
-        1. $\Delta_t \Delta_f = \frac{1}{N}$, $N$ is integer
-        2. $N \geq 2Q + 1$
-        3. $\Delta_t < \frac{1}{2(\Omega_w + \Omega_x)}$
+        1. <img src="https://render.githubusercontent.com/render/math?math=\large \Delta_t \Delta_f = \frac{1}{N}" />, <img src="https://render.githubusercontent.com/render/math?math=\large N" /> is integer
+        2. <img src="https://render.githubusercontent.com/render/math?math=\large N \geq 2Q + 1" />
+        3. <img src="https://render.githubusercontent.com/render/math?math=\large \Delta_t < \frac{1}{2(\Omega_w %2B \Omega_x)}" />
 3. Recursive Method - $\Theta(TF)$
     * Advantage: lower complexity
     * Disadvantage: most constraints
-        1. $\Delta_t \Delta_f = \frac{1}{N}$, $N$ is integer
-        2. $N \geq 2Q + 1$
-        3. $\Delta_t < \frac{1}{2(\Omega_{w} + \Omega_{x})}$
+        1. <img src="https://render.githubusercontent.com/render/math?math=\large \Delta_t \Delta_f = \frac{1}{N}" />, <img src="https://render.githubusercontent.com/render/math?math=\large N" /> is integer
+        2. <img src="https://render.githubusercontent.com/render/math?math=\large N \geq 2Q %2B 1" />
+        3. <img src="https://render.githubusercontent.com/render/math?math=\large \Delta_t < \frac{1}{2(\Omega_{w} %2B \Omega_{x})}" />
         4. only suitable for rectangular windows
-4. Chrip-Z Transform - $\Theta(TNlogN)$
+4. Chrip-Z Transform - <img src="https://render.githubusercontent.com/render/math?math=\large \Theta(TNlogN)" />
     * Advantage: simple, flexible
     * Disadvantage: higher complexity
 

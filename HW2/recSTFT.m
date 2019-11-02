@@ -10,7 +10,7 @@ function y = recSTFT(x, t, f, B) % FFT based
 	n = n0:1:n1; 
 
 	m0 = min(f)/df;
-	m1 = max(f)/df;
+	m1 = max(f)/df; 
 	m  = m0:1:m1;
 
 	N  = 1/(dt*df);

@@ -8,7 +8,7 @@ t3 = [20:dt:30];
 t = [0:dt:30];
 f = [-5:df:5]; 
 
-x = [cos(2*pi*t1), cos(6*pi*t2), cos(4*pi*t3)];
+x = [cos(2*pi*t1), cos(6*pi*t2), cos(3*pi*t3)];
 B = 1;
 
 tic

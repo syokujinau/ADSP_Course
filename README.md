@@ -258,7 +258,7 @@ fplot(f, [-20 10], 'linew', 2)
 
 intf = int(f);
 
-% cacluate numerically
+% calculate numerically
 
 intvec = linspace(-20, 10, 100);
 intf2 = zeros(size(intvec)); % initialize

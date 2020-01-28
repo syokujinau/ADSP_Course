@@ -1,3 +1,269 @@
 # ADSP_Course
 
-:)
+高等數位訊號處理與時頻分析小波轉換課程程式題
+
+# Matlab程式設計
+
+## Symbolic function
+
+`ezplot`可以直接輸入字串
+
+```m
+fx = '10*sin(x)';
+h = ezplot(fx);
+```
+
+![](https://i.imgur.com/mpZ9KDr.png)
+
+
+與`ezplot`不同，`fplot`的第一個參數是匿名函式，第二個參數可指定x軸範圍
+
+<!-- more -->
+
+```m
+fy = @(y) 10*sin(y) + tan(y/2)/10;
+h = fplot(fy, [-15 5]);
+```
+
+![](https://i.imgur.com/VyVudmW.png)
+
+
+
+## Implicit function
+
+
+
+```m
+fts = @(r,t,s) 2.^(t.*s) + r.*s - t.*s.^(1/3);
+h = fimplicit3(fts);
+rotate3d on, axis image
+set(h, 'linestyle', 'none')
+```
+
+![](https://i.imgur.com/ZuCwVX4.png)
+
+## Polar function
+
+
+```m
+cardioid = @(t) 2*(1-cos(t));
+h = ezpolar(cardioid);
+set(h, 'linew', 2, 'color', 'r')
+```
+
+![](https://i.imgur.com/Qhe8B5V.png)
+
+## Function limits
+
+使用`limit`求$\lim_{x\to 5}  \frac{x^2 - 25}{x^2+x-30}$，並作圖。
+
+
+
+```m 
+syms x
+```
+
+用`syms`宣告**symbolic variables**，可視為一個placeholder，這樣就不用宣告特定x的vector，Matlab會幫我們解析表達式。
+
+若宣告為vector形式，`x = [-10:.01:10]`稱為**numeric variables**
+
+```m
+fx = (x^2 - 25) / (x^2+x-30);
+fplot(fx, [-10 10], 'linew', 2)
+
+a = 5;
+lim5 = limit(fx, x, a);
+
+hold on
+plot([1 1]*a, get(gca, 'ylim'), 'r--')
+plot(get(gca, 'xlim'), [1 1]*lim5, 'r--')
+title('$$f(x) = \frac{x^2 - 25}{x^2+x-30}$$','interpreter','latex')
+```
+
+![](https://i.imgur.com/jITma8a.png)
+
+計算$x\to -6$的左極限與右極限
+
+```m
+limit(fx, x, -6, 'left')
+limit(fx, x, -6, 'right')
+```
+
+## Function Derivatives
+
+1. 求$f(x) = sin(x)$導數並作圖
+2. 回傳$f(x)$與$\frac{df(x)}{dx}$在$x=\pi / 3$的**symbolic expression**
+
+```m 
+syms x % symbolic variables
+f = sin(x);
+df = diff(f);
+
+subplot(211)
+fplot(f)
+hold on
+fplot(df)
+
+legend(['f(x) = ' char(f)], ['df = ' char(df)])
+```
+
+![](https://i.imgur.com/einqTrv.png)
+
+
+`subs`: Symbolic substitution
+
+```m
+a = pi / 3;
+subs(f, a)   % 3^(1/2)/2
+subs(df, a)  % 1/2
+```
+
+一樣的函數，在numeric運算，注意會有取樣間隔與導數的vector長度的問題
+
+```m 
+Ts = .001;
+t = -5:Ts:5;
+y = sin(t);
+dy = diff(y) * 1/Ts; % 這裡是discrete derivatives，所以輸出的vector長度會比原本少1
+subplot(212)
+plot(t, y)
+hold on
+plot(t(1:end-1), dy)  % t少取一個才會跟dy長度一樣
+legend({'y(t)', 'dy'})
+```
+
+
+---
+
+
+接下來
+
+1. `fplot`畫出以下函數與其導函數的圖形
+2. `pretty`在console印出數學式
+3. 縱軸範圍-300到300
+
+$$f(x) = \frac{e^{sin(x)^x}}{3^x cos(x)}$$
+
+```m
+syms x
+f = exp(sin(x))^x/(3^x * cos(x));
+df = diff(f);
+
+pretty(f)
+```
+
+![](https://i.imgur.com/JExYWaZ.png)
+
+可用來對照有沒有打錯函數
+
+```m
+pretty(df)
+```
+
+![](https://i.imgur.com/5EtGIsw.png)
+嗯...雖然還是醜醜的，但是相對好閱讀
+
+```m
+figure(8), clf
+fplot(f, 'linew', 2)
+hold on
+fplot(df, 'linew', 2)
+legend({'f(x)', 'df'})
+set(gca, 'ylim', [-300 300])
+```
+
+![](https://i.imgur.com/eN6TExS.png)
+
+
+## Function integration
+
+求$f(x) = x^4$ 不定積分並作圖
+
+
+```m
+syms x
+f = x^4;
+intf = int(f);
+
+figure(9), clf, hold on
+fplot(f, [-2 2])
+fplot(intf, [-2 2])
+legend(['f(x) = ' char(f)], ['\int f dx = ' char(intf) '+C'])
+```
+
+![](https://i.imgur.com/21O7qUM.png)
+
+1. 分別對x與y做$f(x,y) = x^2 + y^3$分部積分
+2. 用`subs`代入$(x, y) = (4, 3)$求值
+
+```m 
+syms x y
+fxy = x^2 + y^3;
+
+int(fxy, x) % x^3/3 + x*y^3
+
+int(fxy, y) % x^2*y + y^4/4
+
+subs(int(fxy, x), [x y], [4 3]) % 388/3
+```
+
+
+---
+
+對以下函數不定積分
+
+$$f(x)=\frac{sec(x) log(tan(x)sin(x) + sin(x)) }{e^x}$$
+
+```m
+syms x 
+f = sec(x) * log(tan(x)*sin(x) + sin(x)) / exp(x);
+
+figure(10), clf, hold on
+fplot(f, [-20 10], 'linew', 2)
+```
+
+若直接用`int`求
+
+```m 
+intf = int(f);
+```
+
+將會回傳int((exp(-x)*log(sin(x) + sin(x)*tan(x)))/cos(x),x)，代表這個函數沒有一個symbolic的解
+
+較好的方式是用numerical方法去近似，也就是代入一個vector的每個值到匿名函數去求解
+
+1. `integral` - Numerically evaluate integral
+2. 匿名函數要用element-wise運算
+3. 積分後`real`取實部，用`plot`畫出
+
+```m 
+syms x 
+f = sec(x) * log(tan(x)*sin(x) + sin(x)) / exp(x);
+
+figure(10), clf, hold on
+fplot(f, [-20 10], 'linew', 2)
+
+
+intf = int(f);
+
+% cacluate numerically
+
+intvec = linspace(-20, 10, 100);
+intf2 = zeros(size(intvec)); % initialize
+
+funcf = @(x) sec(x) .* log(tan(x).*sin(x) + sin(x)) ./ exp(x);
+
+for i = 1:length(intvec)
+    intf2(i) = integral(funcf, intvec(1), intvec(i));
+    %   Q = INTEGRAL(FUN,A,B) approximates the integral of function FUN from A
+    %   to B using global adaptive quadrature and default error tolerances.
+
+end
+
+plot(intvec, real(intf2), 'linew', 2)
+```
+
+![](https://i.imgur.com/WLgP9jY.png)
+
+
+

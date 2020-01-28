@@ -1,3 +1,10 @@
+<!-- 
+
+<img src="https://render.githubusercontent.com/render/math?math=\LARGE " />
+
+
+-->
+
 # ADSP_Course
 
 高等數位訊號處理與時頻分析小波轉換課程程式題
@@ -55,7 +62,7 @@ set(h, 'linew', 2, 'color', 'r')
 
 ## Function limits
 
-使用`limit`求$\lim_{x\to 5}  \frac{x^2 - 25}{x^2+x-30}$，並作圖。
+使用`limit`求<img src="https://render.githubusercontent.com/render/math?math=\lim_{x\to 5}  \frac{x^2 - 25}{x^2+x-30}" />，並作圖。
 
 
 
@@ -82,7 +89,7 @@ title('$$f(x) = \frac{x^2 - 25}{x^2+x-30}$$','interpreter','latex')
 
 ![](https://i.imgur.com/jITma8a.png)
 
-計算$x\to -6$的左極限與右極限
+計算<img src="https://render.githubusercontent.com/render/math?math=x\to -6" />的左極限與右極限
 
 ```m
 limit(fx, x, -6, 'left')
@@ -91,8 +98,8 @@ limit(fx, x, -6, 'right')
 
 ## Function Derivatives
 
-1. 求$f(x) = sin(x)$導數並作圖
-2. 回傳$f(x)$與$\frac{df(x)}{dx}$在$x=\pi / 3$的**symbolic expression**
+1. 求<img src="https://render.githubusercontent.com/render/math?math=f(x) = sin(x)" />導數並作圖
+2. 回傳<img src="https://render.githubusercontent.com/render/math?math=f(x)" />與<img src="https://render.githubusercontent.com/render/math?math=\frac{df(x)}{dx}" />在<img src="https://render.githubusercontent.com/render/math?math=x=\pi / 3" />的**symbolic expression**
 
 ```m 
 syms x % symbolic variables
@@ -142,7 +149,9 @@ legend({'y(t)', 'dy'})
 2. `pretty`在console印出數學式
 3. 縱軸範圍-300到300
 
-$$f(x) = \frac{e^{sin(x)^x}}{3^x cos(x)}$$
+<img src="https://render.githubusercontent.com/render/math?math=\LARGE f(x) = \frac{e^{sin(x)^x}}{3^x cos(x)}" /><br/><br/>
+
+
 
 ```m
 syms x
@@ -154,7 +163,7 @@ pretty(f)
 
 ![](https://i.imgur.com/JExYWaZ.png)
 
-可用來對照有沒有打錯函數
+可用來對照有沒有打錯字
 
 ```m
 pretty(df)
@@ -177,7 +186,7 @@ set(gca, 'ylim', [-300 300])
 
 ## Function integration
 
-求$f(x) = x^4$ 不定積分並作圖
+求<img src="https://render.githubusercontent.com/render/math?math=f(x) = x^4" />不定積分並作圖
 
 
 ```m
@@ -193,8 +202,9 @@ legend(['f(x) = ' char(f)], ['\int f dx = ' char(intf) '+C'])
 
 ![](https://i.imgur.com/21O7qUM.png)
 
-1. 分別對x與y做$f(x,y) = x^2 + y^3$分部積分
-2. 用`subs`代入$(x, y) = (4, 3)$求值
+1. 分別對x與y做<img src="https://render.githubusercontent.com/render/math?math=f(x,y) = x^2 + y^3" />分部積分
+2. 用`subs`代入<img src="https://render.githubusercontent.com/render/math?math=(x, y) = (4, 3)" />求值
+
 
 ```m 
 syms x y
@@ -212,7 +222,9 @@ subs(int(fxy, x), [x y], [4 3]) % 388/3
 
 對以下函數不定積分
 
-$$f(x)=\frac{sec(x) log(tan(x)sin(x) + sin(x)) }{e^x}$$
+<img src="https://render.githubusercontent.com/render/math?math=\LARGE f(x)=\frac{sec(x) log(tan(x)sin(x) + sin(x)) }{e^x}" />
+<br/><br/>
+
 
 ```m
 syms x 
@@ -264,6 +276,8 @@ plot(intvec, real(intf2), 'linew', 2)
 ```
 
 ![](https://i.imgur.com/WLgP9jY.png)
+
+
 
 
 

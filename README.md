@@ -285,13 +285,12 @@ legend(['f(x)'], ['\int f dx'])
 
 1. 求解以下微分方程式
     * General solution
-    * Particular solution $y(0) = \{2,1, 0.75,0.5 \}$
+    * Particular solution <img src="https://render.githubusercontent.com/render/math?math=y(0) = \{2,1, 0.75,0.5 \}" />
 2. 使用`syms`, `diff`, `dsolve`, `meshgrid`, `ezplot`, `quiver`
 
 
 
-$$\frac{dy}{dt} = e^{-t} - 2y$$
-
+<img src="https://render.githubusercontent.com/render/math?math=\LARGE \frac{dy}{dt} = e^{-t} - 2y" /><br/>
 
 ```m 
 syms y(t)
@@ -308,7 +307,7 @@ dsolve(eq, y(0) == 2) % exp(-t) + exp(-2*t)
 ```
 
 畫出背景的gradient vector
-* `meshgrid`: $2 \leq x \leq 3, -1 \leq y \leq 2$分別為30點與32點的網格
+* `meshgrid`: <img src="https://render.githubusercontent.com/render/math?math=2 \leq x \leq 3, -1 \leq y \leq 2" />分別為30點與32點的網格
 * `quiver`: 參數為x、y座標、正規化向量、箭頭大小
 
 ```m
